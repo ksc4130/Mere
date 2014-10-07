@@ -42,30 +42,16 @@ namespace Mere
             return result;
         }
 
-        public static async Task<IEnumerable<dynamic>> ExecuteQueryAsync<T>(string sql)
+        public static Task<List<dynamic>> ExecuteQueryAsync<T>(string sql)
+             where T : new()
+        {
+            return MereQuery.Create<T>().ExecuteCustomQueryDynamicAsync(sql);
+        }
+
+        public static Task<List<dynamic>> ExecuteQueryAsync<T>(string sql, object paramsObj)
             where T : new()
         {
-            var mereTable = CacheCheck<T>();
-
-            var toReturn = new List<dynamic>();
-
-            using (var myCn = mereTable.GetConnection())
-            {
-                var cmd = myCn.CreateCommand();
-
-                cmd.CommandText = sql;
-                await myCn.OpenAsync();
-                using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync()))
-                {
-                    while (reader.Read())
-                    {
-                        toReturn.Add((dynamic)reader);
-                    }
-                    myCn.Close();
-                }
-            }
-
-            return toReturn;
+            return MereQuery.Create<T>().ExecuteCustomQueryDynamicAsync(sql, paramsObj);
         }
 
         public static Task<int> StraightUpBulkCopyAsync<T, TDest>()
@@ -136,27 +122,13 @@ namespace Mere
         public static IEnumerable<dynamic> ExecuteQuery<T>(string sql)
             where T : new()
         {
-            var mereTable = CacheCheck<T>();
+            return MereQuery.Create<T>().ExecuteCustomQueryDynamic(sql);
+        }
 
-            var toReturn = new List<dynamic>();
-
-            using (var myCn = mereTable.GetConnection())
-            {
-                var cmd = myCn.CreateCommand();
-
-                cmd.CommandText = sql;
-                myCn.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
-                {
-                    while (reader.Read())
-                    {
-                        toReturn.Add((dynamic)reader);
-                    }
-                    myCn.Close();
-                }
-            }
-
-            return toReturn;
+        public static IEnumerable<dynamic> ExecuteQuery<T>(string sql, object paramsObj)
+            where T : new()
+        {
+            return MereQuery.Create<T>().ExecuteCustomQueryDynamic(sql, paramsObj);
         }
 
         public static int StraightUpBulkCopy<T, TDest>()

@@ -172,6 +172,74 @@ namespace Mere
             return true;
         }
 
+        public static bool MereBulkCopy<T>(this IEnumerable<T> toCopyFrom ,MereDataSource copyToMereDataSource, int batchSize = 1000, bool truncateLength = false)
+            where T : new()
+        {
+            var toInsertList = toCopyFrom.ToList();
+            if (toInsertList.Count <= 0)
+                return true;
+
+            var mereTableMin = MereUtils.CacheCheck<T>();
+
+            var mereDataReader = new MereDataReader<T>(toInsertList, truncateLength);
+
+            using (var conn = MereUtils.GetConnection(copyToMereDataSource))
+            {
+                conn.Open();
+                using (var cpy = new SqlBulkCopy(conn))
+                {
+                    cpy.EnableStreaming = true;
+                    cpy.BulkCopyTimeout = 0;
+                    cpy.BatchSize = batchSize;
+                    foreach (var mereColumn in mereTableMin.SelectMereColumns)
+                    {
+                        var col = mereColumn.ColumnName;
+                        cpy.ColumnMappings.Add(col, col);
+                    }
+                    cpy.DestinationTableName = copyToMereDataSource.TableName ?? mereTableMin.TableName;
+                    //cpy.NotifyAfter = 1;
+                    //cpy.SqlRowsCopied += (o, e) => Console.WriteLine(e.RowsCopied);
+                    cpy.WriteToServer(mereDataReader);
+                }
+            }
+
+            return true;
+        }
+
+        public async static Task<bool> MereBulkCopyAsync<T>(this IEnumerable<T> toCopyFrom, MereDataSource copyToMereDataSource, int batchSize = 1000, bool truncateLength = false)
+            where T : new()
+        {
+            var toInsertList = toCopyFrom.ToList();
+            if (toInsertList.Count <= 0)
+                return true;
+
+            var mereTableMin = MereUtils.CacheCheck<T>();
+
+            var mereDataReader = new MereDataReader<T>(toInsertList, truncateLength);
+
+            using (var conn = MereUtils.GetConnection(copyToMereDataSource))
+            {
+                await conn.OpenAsync();
+                using (var cpy = new SqlBulkCopy(conn))
+                {
+                    cpy.EnableStreaming = true;
+                    cpy.BulkCopyTimeout = 0;
+                    cpy.BatchSize = batchSize;
+                    foreach (var mereColumn in mereTableMin.SelectMereColumns)
+                    {
+                        var col = mereColumn.ColumnName;
+                        cpy.ColumnMappings.Add(col, col);
+                    }
+                    cpy.DestinationTableName = copyToMereDataSource.TableName ?? mereTableMin.TableName;
+                    //cpy.NotifyAfter = 1;
+                    //cpy.SqlRowsCopied += (o, e) => Console.WriteLine(e.RowsCopied);
+                    await cpy.WriteToServerAsync(mereDataReader);
+                }
+            }
+
+            return true;
+        }
+
         public static int MereStraightUpBulkCopy<T, TDest>(bool includeIdentities = false) where T : new() where TDest : new()
         {
             var mereTableMin = MereUtils.CacheCheck<T>();
