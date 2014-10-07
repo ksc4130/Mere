@@ -1,0 +1,7 @@
+C:\_HhProjects\Mere\Mere.Files\bin\Debug\Mere.Files.dll
+C:\_HhProjects\Mere\Mere.Files\bin\Debug\Mere.Files.pdb
+C:\_HhProjects\Mere\Mere.Files\bin\Debug\Mere.dll
+C:\_HhProjects\Mere\Mere.Files\bin\Debug\Mere.pdb
+C:\_HhProjects\Mere\Mere.Files\obj\Debug\Mere.Files.dll
+C:\_HhProjects\Mere\Mere.Files\obj\Debug\Mere.Files.pdb
+C:\_HhProjects\Mere\Mere.Files\obj\Debug\Mere.Files.csprojResolveAssemblyReference.cache

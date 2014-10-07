@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mere", "Mere\Mere.csproj", "{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mere.Files", "Mere.Files\Mere.Files.csproj", "{73938C8E-A6E1-475C-AC24-297CB003EF51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mere.Excel", "Mere.Excel\Mere.Excel.csproj", "{B23E60E1-3751-4B9C-8068-A350FC74950F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mere.UnitTest", "MereUnitTest\Mere.UnitTest.csproj", "{FE42DD68-58FD-4686-A0ED-7746F1C1131F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://win-bpo-04:8080/tfs/kaiser
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Mere\\Mere.csproj
+		SccProjectName1 = Mere
+		SccLocalPath1 = Mere
+		SccProjectUniqueName2 = Mere.Files\\Mere.Files.csproj
+		SccProjectName2 = Mere.Files
+		SccLocalPath2 = Mere.Files
+		SccProjectUniqueName3 = Mere.Excel\\Mere.Excel.csproj
+		SccProjectName3 = Mere.Excel
+		SccLocalPath3 = Mere.Excel
+		SccProjectUniqueName4 = MereUnitTest\\Mere.UnitTest.csproj
+		SccProjectName4 = MereUnitTest
+		SccLocalPath4 = MereUnitTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73938C8E-A6E1-475C-AC24-297CB003EF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73938C8E-A6E1-475C-AC24-297CB003EF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73938C8E-A6E1-475C-AC24-297CB003EF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73938C8E-A6E1-475C-AC24-297CB003EF51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23E60E1-3751-4B9C-8068-A350FC74950F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23E60E1-3751-4B9C-8068-A350FC74950F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23E60E1-3751-4B9C-8068-A350FC74950F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23E60E1-3751-4B9C-8068-A350FC74950F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE42DD68-58FD-4686-A0ED-7746F1C1131F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE42DD68-58FD-4686-A0ED-7746F1C1131F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE42DD68-58FD-4686-A0ED-7746F1C1131F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE42DD68-58FD-4686-A0ED-7746F1C1131F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

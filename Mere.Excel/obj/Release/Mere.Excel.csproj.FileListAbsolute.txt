@@ -1,0 +1,8 @@
+C:\_HhProjects\Mere\Mere.Excel\bin\Release\Mere.Excel.dll
+C:\_HhProjects\Mere\Mere.Excel\bin\Release\Mere.Excel.pdb
+C:\_HhProjects\Mere\Mere.Excel\bin\Release\CarlosAg.ExcelXmlWriter.dll
+C:\_HhProjects\Mere\Mere.Excel\bin\Release\Mere.dll
+C:\_HhProjects\Mere\Mere.Excel\bin\Release\Mere.pdb
+C:\_HhProjects\Mere\Mere.Excel\obj\Release\Mere.Excel.csprojResolveAssemblyReference.cache
+C:\_HhProjects\Mere\Mere.Excel\obj\Release\Mere.Excel.dll
+C:\_HhProjects\Mere\Mere.Excel\obj\Release\Mere.Excel.pdb

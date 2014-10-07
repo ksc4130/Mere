@@ -1,0 +1,4 @@
+C:\_HhProjects\Mere\Mere\bin\Release\Mere.dll
+C:\_HhProjects\Mere\Mere\bin\Release\Mere.pdb
+C:\_HhProjects\Mere\Mere\obj\Release\Mere.dll
+C:\_HhProjects\Mere\Mere\obj\Release\Mere.pdb

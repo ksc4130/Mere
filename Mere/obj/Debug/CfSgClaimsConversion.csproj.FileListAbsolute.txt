@@ -1,0 +1,10 @@
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\CfSgClaimsConversion.exe.config
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\CfSgClaimsConversion.exe
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\CfSgClaimsConversion.pdb
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\Mere.dll
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\Mere.Files.dll
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\Mere.Files.pdb
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\bin\Debug\Mere.pdb
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\obj\Debug\CfSgClaimsConversion.csprojResolveAssemblyReference.cache
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\obj\Debug\CfSgClaimsConversion.exe
+C:\_HhProjects\CfSgClaimsConvertion\CfSgClaimsConvertion\obj\Debug\CfSgClaimsConversion.pdb

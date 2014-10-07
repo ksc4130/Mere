@@ -1,0 +1,7 @@
+C:\_HhProjects\Mere\Mere.Files\bin\Release\Mere.Files.dll
+C:\_HhProjects\Mere\Mere.Files\bin\Release\Mere.Files.pdb
+C:\_HhProjects\Mere\Mere.Files\bin\Release\Mere.dll
+C:\_HhProjects\Mere\Mere.Files\bin\Release\Mere.pdb
+C:\_HhProjects\Mere\Mere.Files\obj\Release\Mere.Files.csprojResolveAssemblyReference.cache
+C:\_HhProjects\Mere\Mere.Files\obj\Release\Mere.Files.dll
+C:\_HhProjects\Mere\Mere.Files\obj\Release\Mere.Files.pdb

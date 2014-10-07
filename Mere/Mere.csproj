@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F30E5398-DEEB-4131-A2CD-0A2617E8FCA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mere</RootNamespace>
+    <AssemblyName>Mere</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\..\Users\gfulton\Documents\My Received Files\HhWeb\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\MereColumnAttribute.cs" />
+    <Compile Include="Attributes\MereDisplayNameAttribute.cs" />
+    <Compile Include="Attributes\MereIdentityAttribute.cs" />
+    <Compile Include="Attributes\MereIgnoreAttribute.cs" />
+    <Compile Include="Attributes\MereKeyAttribute.cs" />
+    <Compile Include="Attributes\MereMaxLengthAttribute.cs" />
+    <Compile Include="Attributes\MereNullableAttribute.cs" />
+    <Compile Include="Attributes\MereTableAttribute.cs" />
+    <Compile Include="Attributes\MereViewAttribute.cs" />
+    <Compile Include="BaseClasses\MereFilterableParent.cs" />
+    <Compile Include="BaseClasses\MereQueryBase.cs" />
+    <Compile Include="BaseClasses\MereQueryPreBase.cs" />
+    <Compile Include="Interfaces\IMereDelete.cs" />
+    <Compile Include="Interfaces\IMereQueryBase.cs" />
+    <Compile Include="Interfaces\IMereQueryFilter.cs" />
+    <Compile Include="Interfaces\IMereQueryPost.cs" />
+    <Compile Include="Interfaces\IMereQueryPre.cs" />
+    <Compile Include="Interfaces\IMereTable.cs" />
+    <Compile Include="Interfaces\IMereUpdate.cs" />
+    <Compile Include="MereBulk.cs" />
+    <Compile Include="MereBulkExtensions.cs" />
+    <Compile Include="MereColumn.cs" />
+    <Compile Include="MereColumnList.cs" />
+    <Compile Include="MereContext.cs" />
+    <Compile Include="MereContextType.cs" />
+    <Compile Include="MereDataReader.cs" />
+    <Compile Include="MereDataSource.cs" />
+    <Compile Include="MereDelete.cs" />
+    <Compile Include="MereExtensions.cs" />
+    <Compile Include="MereFileFieldParser.cs" />
+    <Compile Include="MereFilter.cs" />
+    <Compile Include="MereFilterGroup.cs" />
+    <Compile Include="MereInsert.cs" />
+    <Compile Include="MereQuery.cs" />
+    <Compile Include="MereRepo.cs" />
+    <Compile Include="MereRepoSubscription.cs" />
+    <Compile Include="MereSave.cs" />
+    <Compile Include="MereSaveExtensions.cs" />
+    <Compile Include="MereSqlDataReader.cs" />
+    <Compile Include="MereTable.cs" />
+    <Compile Include="MereTableMin.cs" />
+    <Compile Include="MereUpdate.cs" />
+    <Compile Include="MereUpdateExtensions.cs" />
+    <Compile Include="MereUtilExtensions.cs" />
+    <Compile Include="MereUtils.cs" />
+    <Compile Include="MereWorker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlHelpers.cs" />
+    <Compile Include="TaskWatcher.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
