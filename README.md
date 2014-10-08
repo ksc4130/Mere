@@ -77,39 +77,66 @@ Query params - @Dob1=9/15/1986
 
 #####Available operators
 EqualTo
+
 EqualToCaseSensitive
+
 NotEqualTo
+
 NotEqualToCaseSensitive
+
 GreaterThan
+
 GreaterThanOrEqualTo
+
 LessThan
+
 LessThanOrEqualTo
+
 In
+
 InCaseSensitive
+
 NotIn
+
 NotInCaseSensitive
+
 Between
+
 NotBetween
+
 Contains
+
 ContainsCaseSensitive
+
 NotContains
+
 NotContainsCaseSensitive
+
 StartsWith
+
 StartsWithCaseSensitive
+
 NotStartsWithCaseSensitive
+
 EndsWith
+
 EndsWithCaseSensitive
+
 NotEndsWith
+
 NotEndsWithCaseSensitive
 
+
 #####AND/OR grouping example
-  ####Creating a query from class and IEnumerable<Person> where Dob is 9/15/1986 and (first name starts with K or last name contains T)
+#####Creating a query from class and IEnumerable<Person> where Dob is 9/15/1986 and (first name starts with K or last name contains T)
+  ```c#
   var dob = new DateTime(1986, 9, 15);
   var results = MereQuery.Create<Person>()
     .Where(x => x.Dob).EqualTo(dob)
     .AndGroup(x => x.FirstName).StartsWith("K")
     .Or(x => x.LastName).Contains("T")
     .Execute();
+  ```
 
 Query - 
 SELECT PersonId, FirstName, LastName 
@@ -153,7 +180,7 @@ Query params - @Dob1=9/15/1986
 
     var newId = p.PersonId;//this will be automatically set to the value per the @@IDENTITY value of the transaction
   ```
-  #####Pulling person updating property and upserting new person record
+#####Pulling person updating property and upserting new person record
   ```c#
   var p = MereQuery.Create<Person>()
     .Where(x => x.FirstName).EqualTo("Jimbob")
@@ -168,7 +195,7 @@ Query params - @Dob1=9/15/1986
     var newId = p.PersonId;//this will be what ever id was pull on the initial query
   ```
 
-  #####Copying data from one server to another
+#####Copying data from one server to another
     ```c#
     var ds1 = MereDataSource.Create([ServerName1:string], [DatabaseName1:string], [UserId1:string], [Password1:string]);
     var ds2 = MereDataSource.Create([ServerName2:string], [DatabaseName2:string], [UserId2:string], [Password2:string]);
