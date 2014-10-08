@@ -20,7 +20,7 @@ Install-Package Mere
   ```c#
   var insert = MereInsert.Create<Person>();
   ```
-##Simple Queries ######- using attribute for conn. config
+##Simple Queries - using attribute for conn. config
 
 ###Model to use
   ```c#
