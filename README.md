@@ -208,6 +208,9 @@ Query params - @Dob1=9/15/1986
     ```
 
 #####Executing custom sql
+```c#
+var sql = @"SELECT FirstName, LastName FROM Person";
+```
   ```c#
   var sql = @"SELECT FirstName, LastName FROM Person";
   var results = MereQuery.Create<Person>.ExecuteCustomQuery(sql);// will be IEnumerable<Person> with only FirstName and LastName values set
