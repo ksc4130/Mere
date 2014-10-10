@@ -84,7 +84,25 @@ namespace Mere
         {
             var mereTable = CacheCheck<T>();
             int result;
-            using (var myCn = mereTable.GetConnection())
+            using (var myCn = GetConnection<T>())
+            {
+                var cmd = myCn.CreateCommand();
+
+                cmd.CommandText = string.Format("TRUNCATE TABLE {0}", mereTable.TableName);
+                await myCn.OpenAsync();
+                result = await cmd.ExecuteNonQueryAsync();
+                myCn.Close();
+            }
+
+            return result;
+        }
+
+        public static async Task<int> TruncateTableAsync<T>(MereDataSource mereDataSource)
+            where T : new()
+        {
+            var mereTable = CacheCheck<T>();
+            int result;
+            using (var myCn = GetConnection<T>(mereDataSource))
             {
                 var cmd = myCn.CreateCommand();
 
@@ -161,7 +179,25 @@ namespace Mere
         {
             var mereTable = CacheCheck<T>();
             int result;
-            using (var myCn = mereTable.GetConnection())
+            using (var myCn = GetConnection<T>())
+            {
+                var cmd = myCn.CreateCommand();
+
+                cmd.CommandText = string.Format("TRUNCATE TABLE {0}", mereTable.TableName);
+                myCn.Open();
+                result = cmd.ExecuteNonQuery();
+                myCn.Close();
+            }
+
+            return result;
+        }
+
+        public static int TruncateTable<T>(MereDataSource mereDataSource)
+            where T : new()
+        {
+            var mereTable = CacheCheck<T>();
+            int result;
+            using (var myCn = GetConnection<T>(mereDataSource))
             {
                 var cmd = myCn.CreateCommand();
 
