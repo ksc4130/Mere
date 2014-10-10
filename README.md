@@ -196,21 +196,18 @@ Query params - @Dob1=9/15/1986
   ```
 
 #####Copying data from one server to another
-    ```c#
-    var ds1 = MereDataSource.Create([ServerName1:string], [DatabaseName1:string], [UserId1:string], [Password1:string]);
-    var ds2 = MereDataSource.Create([ServerName2:string], [DatabaseName2:string], [UserId2:string], [Password2:string]);
+  ```c#
+  var ds1 = MereDataSource.Create([ServerName1:string], [DatabaseName1:string], [UserId1:string], [Password1:string]);
+  var ds2 = MereDataSource.Create([ServerName2:string], [DatabaseName2:string], [UserId2:string], [Password2:string]);
 
-    //createing a MereQuery with a MereDataSource will over attribute conn. config 
-    var sourceData = MereQuery.Create<Person>(ds1)
-      .Execute();//this will be an IEnumerable<Person> from server 1)
+  //createing a MereQuery with a MereDataSource will over attribute conn. config 
+  var sourceData = MereQuery.Create<Person>(ds1)
+    .Execute();//this will be an IEnumerable<Person> from server 1)
 
-    sourceData.MereBulkCopy(ds2);//this will insert the data from server1 into server2 taking advantage of sql bulk abilities
-    ```
+  sourceData.MereBulkCopy(ds2);//this will insert the data from server1 into server2 taking advantage of sql bulk abilities
+  ```
 
 #####Executing custom sql
-```c#
-var sql = @"SELECT FirstName, LastName FROM Person";
-```
   ```c#
   var sql = @"SELECT FirstName, LastName FROM Person";
   var results = MereQuery.Create<Person>.ExecuteCustomQuery(sql);// will be IEnumerable<Person> with only FirstName and LastName values set
