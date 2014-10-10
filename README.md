@@ -208,18 +208,18 @@ Query params - @Dob1=9/15/1986
     ```
 
 #####Executing custom sql
-    ```c#
-    var sql = @"SELECT FirstName, LastName FROM Person";
-    var results = MereQuery.Create<Person>.ExecuteCustomQuery(sql);// will be IEnumerable<Person> with only FirstName and LastName values set
+  ```c#
+  var sql = @"SELECT FirstName, LastName FROM Person";
+  var results = MereQuery.Create<Person>.ExecuteCustomQuery(sql);// will be IEnumerable<Person> with only FirstName and LastName values set
   
-    //execute sql params
-    var sqlp = @"SELECT FirstName, LastName FROM Person WHERE FirstName=@fName";
-    var resultsp = MereQuery.Create<Person>.ExecuteCustomQueryToList(sql, new {fName="Jimbob"});// will be List<Person> with only FirstName and LastName values set
+  //execute sql params
+  var sqlp = @"SELECT FirstName, LastName FROM Person WHERE FirstName=@fName";
+  var resultsp = MereQuery.Create<Person>.ExecuteCustomQueryToList(sql, new {fName="Jimbob"});// will be List<Person> with only FirstName and LastName values set
   
-    //using MereUtils short hand version
-    var resultsS = MereUtils.ExecuteQuery<Person>(sql);
-    var resultspS = MereUtils.ExecuteQuery<Person>(sqlp, new {fName="Jimbob"});
-    ```
+  //using MereUtils short hand version
+  var resultsS = MereUtils.ExecuteQuery<Person>(sql);
+  var resultspS = MereUtils.ExecuteQuery<Person>(sqlp, new {fName="Jimbob"});
+  ```
 
 #####Truncating a table
   ```c#
