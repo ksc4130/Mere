@@ -326,6 +326,13 @@ namespace Mere
                 QueryContext.Top = top;
                 return this;
             }
+
+            public IMereQueryPre<T> SetTimeout(int timeout)
+            {
+                QueryContext.Timeout = timeout;
+                return this;
+            }
+
             public IMereQueryPre<T> SetFields<TFields>()
             {
                 QueryContext.SetFields<TFields>();
@@ -429,6 +436,13 @@ namespace Mere
                 QueryContext.Top = top;
                 return this;
             }
+
+            public IMereQueryPost<T> SetTimeout(int timeout)
+            {
+                QueryContext.Timeout = timeout;
+                return this;
+            }
+
             public IMereQueryPost<T> SetFields<TFields>()
             {
                 QueryContext.SetFields<TFields>();

@@ -33,6 +33,8 @@ namespace Mere.Interfaces
         IMereQueryPre<T> SetPassword(string password);
 
         IMereQueryPre<T> SetTop(int top);
+
+        IMereQueryPre<T> SetTimeout(int timeout);
         #endregion
 
         #region filter methods

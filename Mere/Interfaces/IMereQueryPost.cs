@@ -31,6 +31,8 @@ namespace Mere.Interfaces
         IMereQueryPost<T> SetPassword(string password);
 
         IMereQueryPost<T> Top(int top);
+
+        IMereQueryPost<T> SetTimeout(int timeout);
         #endregion
 
         #region filter methods
