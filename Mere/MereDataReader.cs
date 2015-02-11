@@ -36,6 +36,12 @@ namespace Mere
 
         public string GetName(int i)
         {
+            var dic = _list[_curIndex] as IDictionary<string, object>;
+            if (dic != null)
+            {
+                return dic.Keys.ToList()[i];
+            }
+
             if (_mereTable.SelectMereColumns.Count - 1 < i)
                 return string.Empty;
 
@@ -44,6 +50,12 @@ namespace Mere
 
         public object GetValue(int i)
         {
+            var dic = _list[_curIndex] as IDictionary<string, object>;
+            if (dic != null)
+            {
+                return dic[dic.Keys.ToList()[i]];
+            }
+
             if (_mereTable.SelectMereColumns.Count - 1 < i)
                 return null;
             var toReturn = _mereTable.SelectMereColumns[i].Get(_list[_curIndex], TruncateLength);
@@ -52,6 +64,15 @@ namespace Mere
 
         public int GetOrdinal(string name)
         {
+            if (_list.Count > 0)
+            {
+                var dic = _list[0] as IDictionary<string, object>;
+                if (dic != null)
+                {
+                    return dic.Keys.ToList().IndexOf(name);
+                }
+            }
+
             var r = _mereTable.GetMereColumn(name);
             if (r == null)
                 return -1;
@@ -77,6 +98,17 @@ namespace Mere
         public bool IsDBNull(int i)
         // ReSharper restore InconsistentNaming
         {
+            var dic = _list[_curIndex] as IDictionary<string, object>;
+            if (dic != null)
+            {
+                if (dic.Keys.Count - 1 < i)
+                {
+                    return true;
+                }
+                var vald = dic[dic.Keys.ToList()[i]];
+                return vald == null || vald == DBNull.Value;
+            }
+
             if (_mereTable.SelectMereColumns.Count - 1 < i)
             { return true; }
             var val = _mereTable.SelectMereColumns[i].Get(_list[_curIndex], TruncateLength);

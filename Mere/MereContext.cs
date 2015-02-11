@@ -739,21 +739,30 @@ namespace Mere
         {
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
                     {
-                        yield return (ExpandoObject)reader;
+
+                        while (reader.Read())
+                        {
+                            yield return (ExpandoObject)reader;
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
+
             }
         }
 
@@ -762,21 +771,29 @@ namespace Mere
             var toReturn = new List<ExpandoObject>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
                     {
-                        toReturn.Add(reader);
+
+                        while (reader.Read())
+                        {
+                            toReturn.Add(reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
@@ -786,22 +803,29 @@ namespace Mere
             var toReturn = new List<ExpandoObject>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                await cmd.Connection.OpenAsync();
-                using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (await reader.ReadAsync())
+                    await cmd.Connection.OpenAsync();
+                    using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync()))
                     {
-                        toReturn.Add(reader);
+
+                        while (await reader.ReadAsync())
+                        {
+                            toReturn.Add(reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
@@ -810,21 +834,29 @@ namespace Mere
         {
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
                     {
-                        yield return (ExpandoObject)reader;
+
+                        while (reader.Read())
+                        {
+                            yield return (ExpandoObject)reader;
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
         }
 
@@ -833,21 +865,29 @@ namespace Mere
             var toReturn = new List<dynamic>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader()))
                     {
-                        toReturn.Add((ExpandoObject)reader);
+
+                        while (reader.Read())
+                        {
+                            toReturn.Add((ExpandoObject)reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
@@ -857,22 +897,29 @@ namespace Mere
             var toReturn = new List<dynamic>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                await cmd.Connection.OpenAsync();
-                using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync()))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (await reader.ReadAsync())
+                    await cmd.Connection.OpenAsync();
+                    using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync()))
                     {
-                        toReturn.Add((ExpandoObject)reader);
+
+                        while (await reader.ReadAsync())
+                        {
+                            toReturn.Add((ExpandoObject)reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
@@ -881,21 +928,29 @@ namespace Mere
         {
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader(), SelectMereColumnsList, true))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader(), SelectMereColumnsList, true))
                     {
-                        yield return reader;
+
+                        while (reader.Read())
+                        {
+                            yield return reader;
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
         }
         public List<T> RunQueryList(string sql, List<SqlParameter> parameters)
@@ -903,22 +958,29 @@ namespace Mere
             var toReturn = new List<T>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                cmd.Connection.Open();
-                using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader(), SelectMereColumnsList, true))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (reader.Read())
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader(), SelectMereColumnsList, true))
                     {
-                        toReturn.Add(reader);
+
+                        while (reader.Read())
+                        {
+                            toReturn.Add(reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
@@ -928,22 +990,29 @@ namespace Mere
             var toReturn = new List<T>();
             using (var cmd = parameters != null ? GetCommand(parameters) : GetCommand(false))
             {
-
-                cmd.CommandText = sql ?? Sql;
-                cmd.CommandTimeout = Timeout;
-
-                await cmd.Connection.OpenAsync();
-                using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync(), SelectMereColumnsList, true))
+                try
                 {
+                    cmd.CommandText = sql ?? Sql;
+                    cmd.CommandTimeout = Timeout;
 
-                    while (await reader.ReadAsync())
+                    await cmd.Connection.OpenAsync();
+                    using (var reader = new MereSqlDataReader<T>(await cmd.ExecuteReaderAsync(), SelectMereColumnsList, true))
                     {
-                        toReturn.Add(reader);
+
+                        while (await reader.ReadAsync())
+                        {
+                            toReturn.Add(reader);
+                        }
+
                     }
+                }
+                finally
+                {
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
                     cmd.Parameters.Clear();
                 }
+
             }
             return toReturn;
         }
