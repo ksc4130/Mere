@@ -66,6 +66,7 @@ namespace Mere
                         }
 
                         //defaults to insert if no key available
+                        cmd.CommandText = mereTable.SqlInsert;
                         var inserted1 = cmd.ExecuteNonQuery();
                         tx.Commit();
                         if (inserted1 <= 0)
