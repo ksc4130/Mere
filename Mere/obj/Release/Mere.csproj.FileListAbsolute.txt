@@ -6,3 +6,4 @@ C:\src\Mere\Mere\Mere\bin\Release\Mere.dll
 C:\src\Mere\Mere\Mere\bin\Release\Mere.pdb
 C:\src\Mere\Mere\Mere\obj\Release\Mere.dll
 C:\src\Mere\Mere\Mere\obj\Release\Mere.pdb
+C:\src\Mere\Mere\Mere\obj\Release\Mere.csprojResolveAssemblyReference.cache
