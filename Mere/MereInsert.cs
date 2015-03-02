@@ -23,6 +23,11 @@ namespace Mere
         {
             return MereInsert<T>.Create();
         }
+
+        public static MereInsert<T> Create<T>(MereDataSource mds) where T : new()
+        {
+            return MereInsert<T>.Create(mds);
+        }
     }
     public class MereInsert<T> where T : new()
     {
