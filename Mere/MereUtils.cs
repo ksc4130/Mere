@@ -249,6 +249,28 @@ namespace Mere
                 0);
         }
 
+        public static string GetConnectionString(MereDataSource mds)
+        {
+            return string.Format(
+                ConnectionStringBase,
+                mds.ServerName,
+                mds.DatabaseName,
+                mds.UserId,
+                mds.Password,
+                0);
+        }
+
+        public static string GetConnectionString(MereDataSource mds, int timeout)
+        {
+            return string.Format(
+                ConnectionStringBase,
+                mds.ServerName,
+                mds.DatabaseName,
+                mds.UserId,
+                mds.Password,
+                timeout);
+        }
+
         public static string GetConnectionString<T>(int timeout)
             where T : new()
         {
