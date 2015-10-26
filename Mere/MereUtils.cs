@@ -823,16 +823,12 @@ namespace Mere
                     else
                     {
                         DateTime test;
-                        if (DateTime.TryParse(val == null ? "0" : val.ToString(), out test))
+                        if (val != null && DateTime.TryParse(val.ToString(), out test))
                         {
                             if (test.Year < 1900)
                                 test = new DateTime(1900, 1, 1, test.Hour, test.Minute, test.Second, test.Millisecond);
 
                             d = test;
-                        }
-                        else
-                        {
-                            d = null;
                         }
                     }
 
@@ -858,19 +854,15 @@ namespace Mere
             {
                 setAct = (parent, val) =>
                 {
-                    int? d;
+                    int? d = null;
                     if (!CleanupConversion)
                         d = (int?)val;
                     else
                     {
                         int test;
-                        if (int.TryParse(val == null ? "0" : val.ToString(), out test))
+                        if (val  != null && int.TryParse(val.ToString(), out test))
                         {
                             d = test;
-                        }
-                        else
-                        {
-                            d = null;
                         }
                     }
 
@@ -896,19 +888,15 @@ namespace Mere
             {
                 setAct = (parent, val) =>
                 {
-                    long? d;
+                    long? d = null;
                     if (!CleanupConversion)
                         d = (long?)val;
                     else
                     {
                         long test;
-                        if (long.TryParse(val == null ? "0" : val.ToString(), out test))
+                        if (val != null && long.TryParse(val.ToString(), out test))
                         {
                             d = test;
-                        }
-                        else
-                        {
-                            d = null;
                         }
                     }
 
@@ -934,19 +922,15 @@ namespace Mere
             {
                 setAct = (parent, val) =>
                 {
-                    decimal? d;
+                    decimal? d = null;
                     if (!CleanupConversion)
                         d = (decimal?)val;
                     else
                     {
                         decimal test;
-                        if (decimal.TryParse(val == null ? "0" : val.ToString(), out test))
+                        if (val != null && decimal.TryParse(val.ToString(), out test))
                         {
                             d = test;
-                        }
-                        else
-                        {
-                            d = null;
                         }
                     }
 

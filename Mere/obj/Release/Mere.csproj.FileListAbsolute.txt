@@ -7,3 +7,8 @@ C:\src\Mere\Mere\Mere\bin\Release\Mere.pdb
 C:\src\Mere\Mere\Mere\obj\Release\Mere.dll
 C:\src\Mere\Mere\Mere\obj\Release\Mere.pdb
 C:\src\Mere\Mere\Mere\obj\Release\Mere.csprojResolveAssemblyReference.cache
+Y:\src\mere\Mere\bin\Release\Mere.dll
+Y:\src\mere\Mere\bin\Release\Mere.pdb
+Y:\src\mere\Mere\obj\Release\Mere.csprojResolveAssemblyReference.cache
+Y:\src\mere\Mere\obj\Release\Mere.dll
+Y:\src\mere\Mere\obj\Release\Mere.pdb
