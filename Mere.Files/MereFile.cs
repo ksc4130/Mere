@@ -100,6 +100,93 @@ namespace Mere.Files
             }
         }
 
+        /// <summary>
+        /// used to read delimited file and create/fill pocos for each rec/line provided 
+        /// this uses provide indexes from attributes to map values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="file"></param>
+        /// <param name="trimStart"></param>
+        /// <param name="trimEnd"></param>
+        /// <returns></returns>
+        #region reading
+        public IList<T> ReadDelimitedFile<T>(FileInfo file, string trimStart, string trimEnd) where T : new()
+        {
+            var lines = File.ReadLines(file.FullName).ToList();
+
+            return ParseDelimitedLines<T>(lines, trimStart, trimEnd);
+        }
+
+        /// <summary>
+        /// used to create/fill pocos for each rec/line provided 
+        /// this uses provide indexes from attributes to map values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="linesIn"></param>
+        /// <param name="trimStart"></param>
+        /// <param name="trimEnd"></param>
+        /// <returns></returns>
+        public IList<T> ParseDelimitedLines<T>(List<string> linesIn, string trimStart, string trimEnd) where T : new()
+        {
+            //TODO: needs support for headers to fill obj and parsing options
+            
+            var mereTable = MereFileUtils.CacheCheckFile<T>();
+
+            if (mereTable.DelimitedFields.GroupBy(x => x.Index, (k, g) => g.ToList()).Any(x => x.Count > 1))
+                throw new Exception("Provided model has duplicated indexes which are used to map values to class members. Please use unique indexing.");
+
+            var delimitedFields = mereTable.DelimitedFields.ToList();
+            var toReturn = new List<T>();
+            IList<string> header = null;
+
+            var lines = linesIn.Select(s => s.Split(new[] {mereTable.Delimiter}, StringSplitOptions.None).ToList()).ToList();
+
+
+            if (lines.Count < 1 || (mereTable.DelimitedHasHeader && lines.Count < 2))
+                return null;
+
+            if (mereTable.DelimitedHasHeader)
+            {
+                header = lines.FirstOrDefault();
+                lines.RemoveAt(0);
+            }
+
+            foreach (var line in lines)
+            {
+                var n = Activator.CreateInstance<T>();
+                foreach (var mereFileField in delimitedFields)
+                {
+                    if (mereFileField.Index >= line.Count)
+                        continue;
+
+                    var val = line[mereFileField.Index];
+
+                    if (trimStart != null) val = val.TrimStart(trimStart.ToCharArray());
+                    if (trimEnd != null) val = val.TrimEnd(trimEnd.ToCharArray());
+
+                    //                    if (mereFileField.DelimitedFieldAttr.TrimStart != null)
+                    //                        val = val.TrimStart(mereFileField.DelimitedFieldAttr.TrimStart.ToCharArray());
+                    //                    if (mereFileField.DelimitedFieldAttr.TrimEnd != null)
+                    //                        val = val.TrimEnd(mereFileField.DelimitedFieldAttr.TrimEnd.ToCharArray());
+                    //
+                    //                    if (mereTable.DelimitedTableAttr != null && mereTable.DelimitedTableAttr.TrimStart != null)
+                    //                        val = val.TrimStart(mereTable.DelimitedTableAttr.TrimStart.ToCharArray());
+                    //                    if (mereTable.DelimitedTableAttr != null && mereTable.DelimitedTableAttr.TrimEnd != null)
+                    //                        val = val.TrimEnd(mereTable.DelimitedTableAttr.TrimEnd.ToCharArray());
+
+                    //if (mereColumn.DelimitedFieldAttr.ParsingOptions != null && mereColumn.DelimitedFieldAttr.ParsingOptions.Any())
+                    val = MereFileFieldParser.Parse(mereFileField, val, true);
+
+                    mereFileField.MereColumnForField.Set(n, val);
+                }
+
+                toReturn.Add(n);
+            }
+
+            return toReturn;
+        }
+        #endregion
+
         #region Parsing
         public List<string> ParseForDelimitedWrite<T>(IEnumerable<T> records)
         {

@@ -10,7 +10,7 @@ namespace Mere.Files
 {
     public class MereDelimitedFile<T> : MereFile<T> where T :new()
     {
-        
+       
     }
 }
 
