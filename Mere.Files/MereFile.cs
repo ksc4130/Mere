@@ -14,8 +14,8 @@ namespace Mere.Files
         public MereFile()
             : base(typeof(T)) { }
 
-        private MereTableMin<T> _mereTable;
-        public MereTableMin<T> MereTableMin
+        private MereTable<T> _mereTable;
+        public MereTable<T> MereTableMin
         {
             get { return _mereTable ?? (_mereTable = MereUtils.CacheCheck<T>()); }
             set { _mereTable = value; }
@@ -34,7 +34,7 @@ namespace Mere.Files
             return MereFileUtils.CacheCheckFile<T>();
         }
 
-        public MereTableMin MereTableMin { get; set; }
+        public MereTable MereTableMin { get; set; }
         public MereFileField MereFileFieldForSubRecord { get; set; }
 
         public virtual bool DelimitedHasHeader { get; set; }

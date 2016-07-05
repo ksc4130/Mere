@@ -9,7 +9,7 @@ namespace Mere
     {
         private readonly IList<T> _list;
         private int _curIndex = -1;
-        private readonly MereTableMin _mereTable;
+        private readonly MereTable _mereTable;
         public int FieldCount { get; private set; }
         public bool TruncateLength { get; set; }
 

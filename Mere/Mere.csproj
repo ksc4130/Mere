@@ -54,9 +54,6 @@
     <Compile Include="Attributes\MereNullableAttribute.cs" />
     <Compile Include="Attributes\MereTableAttribute.cs" />
     <Compile Include="Attributes\MereViewAttribute.cs" />
-    <Compile Include="BaseClasses\MereFilterableParent.cs" />
-    <Compile Include="BaseClasses\MereQueryBase.cs" />
-    <Compile Include="BaseClasses\MereQueryPreBase.cs" />
     <Compile Include="Interfaces\IMereDelete.cs" />
     <Compile Include="Interfaces\IMereQueryBase.cs" />
     <Compile Include="Interfaces\IMereQueryFilter.cs" />
@@ -84,7 +81,6 @@
     <Compile Include="MereSave.cs" />
     <Compile Include="MereSaveExtensions.cs" />
     <Compile Include="MereSqlDataReader.cs" />
-    <Compile Include="MereTable.cs" />
     <Compile Include="MereTableMin.cs" />
     <Compile Include="MereUpdate.cs" />
     <Compile Include="MereUpdateExtensions.cs" />

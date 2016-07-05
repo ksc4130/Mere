@@ -10,7 +10,7 @@ namespace Mere
 {
     public class MereRepo<T> where T : new()
     {
-        private MereTableMin<T> _mereTable;
+        private MereTable<T> _mereTable;
         private MereColumn _keyColumn;
         private bool _updateWriting;
         private List<Task> _taskQue = new List<Task>();

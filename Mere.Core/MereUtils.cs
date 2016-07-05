@@ -1,24 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Net.Mail;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Mere.Attributes;
 
-namespace Mere
+namespace Mere.Core
 {
-    public partial class MereUtils
+    public static class MereUtils
     {
         #region sql
 
@@ -300,7 +286,7 @@ namespace Mere
                 d.ServerName, d.DatabaseName, d.UserId, d.Password, 0));
         }
 
-        public static SqlConnection GetConnection<T>(MereDataSource mereDataSource) 
+        public static SqlConnection GetConnection<T>(MereDataSource mereDataSource)
             where T : new()
         {
             mereDataSource = mereDataSource ?? MereDataSource.Create<T>();
@@ -832,10 +818,10 @@ namespace Mere
                         }
                     }
 
-                    // ReSharper disable AssignNullToNotNullAttribute
-                    mereColumn.PropertyDescriptor.SetValue(parent, d);
-                    // ReSharper restore AssignNullToNotNullAttribute
-                };
+                        // ReSharper disable AssignNullToNotNullAttribute
+                        mereColumn.PropertyDescriptor.SetValue(parent, d);
+                        // ReSharper restore AssignNullToNotNullAttribute
+                    };
             }
             else if (mereColumn.PropertyDescriptor.PropertyType == typeof(int))
             {
@@ -860,16 +846,16 @@ namespace Mere
                     else
                     {
                         int test;
-                        if (val  != null && int.TryParse(val.ToString(), out test))
+                        if (val != null && int.TryParse(val.ToString(), out test))
                         {
                             d = test;
                         }
                     }
 
-                    // ReSharper disable AssignNullToNotNullAttribute
-                    mereColumn.PropertyDescriptor.SetValue(parent, d);
-                    // ReSharper restore AssignNullToNotNullAttribute
-                };
+                        // ReSharper disable AssignNullToNotNullAttribute
+                        mereColumn.PropertyDescriptor.SetValue(parent, d);
+                        // ReSharper restore AssignNullToNotNullAttribute
+                    };
             }
             else if (mereColumn.PropertyDescriptor.PropertyType == typeof(long))
             {
@@ -934,10 +920,10 @@ namespace Mere
                         }
                     }
 
-                    // ReSharper disable AssignNullToNotNullAttribute
-                    mereColumn.PropertyDescriptor.SetValue(parent, d);
-                    // ReSharper restore AssignNullToNotNullAttribute
-                };
+                        // ReSharper disable AssignNullToNotNullAttribute
+                        mereColumn.PropertyDescriptor.SetValue(parent, d);
+                        // ReSharper restore AssignNullToNotNullAttribute
+                    };
             }
             else
             {
@@ -2170,3 +2156,5 @@ namespace Mere
         #endregion
     }
 }
+
+

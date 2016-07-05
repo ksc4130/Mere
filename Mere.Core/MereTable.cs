@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Mere
+namespace Mere.Core
 {
     public class MereTable<T> : MereTable where T : new()
     {
@@ -35,10 +35,12 @@ namespace Mere
         public virtual string KeyColumnName { get; set; }
         public virtual string KeyPropertyName { get; set; }
         public virtual bool IsView { get; set; }
-        public virtual SqlConnection GetConnection()
-        {
-            return new SqlConnection(ConnectionString);
-        }
+
+        //moved to ext
+//        public virtual SqlConnection GetConnection()
+//        {
+//            return new SqlConnection(ConnectionString);
+//        }
 
         public string ConnectionStringBase { get; set; }
         public string ConnectionString
@@ -67,15 +69,8 @@ namespace Mere
         }
 
         #region SelectMereColumns
-        private MereColumnList _allMereColumns;
-        public virtual MereColumnList AllMereColumns
-        {
-            get { return _allMereColumns; }
-            set
-            {
-                _allMereColumns = value;
-            }
-        }
+
+        public virtual MereColumnList AllMereColumns { get; set; }
 
         private MereColumnList _selectMereColumns;
         public virtual MereColumnList SelectMereColumns
@@ -147,88 +142,89 @@ namespace Mere
 
         #endregion
 
+        //moving to ext
         #region sql starters
-        public string SqlColumnNamesAll
-        {
-            get
-            {
-                return string.Join(", ", SelectMereColumns.Select(x => "[" + x.ColumnName + "]"));
-            }
-        }
+//        public string SqlColumnNamesAll
+//        {
+//            get
+//            {
+//                return string.Join(", ", SelectMereColumns.Select(x => "[" + x.ColumnName + "]"));
+//            }
+//        }
 
-        public string SqlColumnNamesNoIdentity
-        {
-            get
-            {
-                return string.Join(", ", SelectMereColumnsNoIdentity().Select(x => "[" + x.ColumnName + "]"));
-            }
-        }
+//        public string SqlColumnNamesNoIdentity
+//        {
+//            get
+//            {
+//                return string.Join(", ", SelectMereColumnsNoIdentity().Select(x => "[" + x.ColumnName + "]"));
+//            }
+//        }
 
-        public string SqlColumnNamesNoIdentityForValues
-        {
-            get
-            {
-                return " @" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName));
-            }
-        }
+//        public string SqlColumnNamesNoIdentityForValues
+//        {
+//            get
+//            {
+//                return " @" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName));
+//            }
+//        }
 
-        public string SqlColumnNamesNoIdentityForUpdate
-        {
-            get
-            {
-                return string.Join(", ",
-                                   SelectMereColumnsNoIdentity().Select(x => "[" + x.ColumnName + "]=@" + x.ColumnName));
-            }
-        }
+//        public string SqlColumnNamesNoIdentityForUpdate
+//        {
+//            get
+//            {
+//                return string.Join(", ",
+//                                   SelectMereColumnsNoIdentity().Select(x => "[" + x.ColumnName + "]=@" + x.ColumnName));
+//            }
+//        }
 
-        public string SqlUpdateWithoutKey
-        {
-            get { return "UPDATE " + TableName + " SET " + SqlColumnNamesNoIdentityForUpdate + " "; }
-        }
+//        public string SqlUpdateWithoutKey
+//        {
+//            get { return "UPDATE " + TableName + " SET " + SqlColumnNamesNoIdentityForUpdate + " "; }
+//        }
 
-        public string SqlInsert
-        {
-            get { return "INSERT INTO " + TableName + " (" + SqlColumnNamesNoIdentity + ") VALUES(" + SqlColumnNamesNoIdentityForValues + ")"; }
-        }
+//        public string SqlInsert
+//        {
+//            get { return "INSERT INTO " + TableName + " (" + SqlColumnNamesNoIdentity + ") VALUES(" + SqlColumnNamesNoIdentityForValues + ")"; }
+//        }
 
-        public string SqlInsertValueSetPrefixedWithComma()
-        {
-            return ", (" + SqlColumnNamesNoIdentityForValues + ")";
-        }
+//        public string SqlInsertValueSetPrefixedWithComma()
+//        {
+//            return ", (" + SqlColumnNamesNoIdentityForValues + ")";
+//        }
 
-        public string SqlInsertValueSetPrefixedWithComma(string uniqueParamSuffix)
-        {
-            return ", (@" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName + uniqueParamSuffix)) + ")";
-        }
+//        public string SqlInsertValueSetPrefixedWithComma(string uniqueParamSuffix)
+//        {
+//            return ", (@" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName + uniqueParamSuffix)) + ")";
+//        }
 
-        public string SqlInsertValueSetPrefixedWithComma(int uniqueParamSuffix)
-        {
-            return ", (@" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName + uniqueParamSuffix)) + ")";
-        }
+//        public string SqlInsertValueSetPrefixedWithComma(int uniqueParamSuffix)
+//        {
+//            return ", (@" + string.Join(", @", SelectMereColumnsNoIdentity().Select(x => x.ColumnName + uniqueParamSuffix)) + ")";
+//        }
 
-        public virtual string GetUpsertSqlWithKey()
-        {
-            return @"IF (SELECT COUNT(0) FROM " + TableName + @" WHERE " + KeyColumnName + @"=@key) > 0
-                     BEGIN "
-                        + SqlUpdateWithoutKey + @" WHERE " + KeyColumnName + @"=@key
-                     END
-                 ELSE
-                     BEGIN "
-                       + SqlInsert + 
-                     "END";
-        }
+//        public virtual string GetUpsertSqlWithKey()
+//        {
+//            return @"IF (SELECT COUNT(0) FROM " + TableName + @" WHERE " + KeyColumnName + @"=@key) > 0
+//                     BEGIN "
+//                        + SqlUpdateWithoutKey + @" WHERE " + KeyColumnName + @"=@key
+//                     END
+//                 ELSE
+//                     BEGIN "
+//                       + SqlInsert +
+//                     "END";
+//        }
 
-        public virtual string GetUpsertSqlWithCustomKey(string columnName)
-        {
-            return @"IF (SELECT COUNT(0) FROM " + TableName + @" WHERE " + columnName + @"=@key) > 0
-                     BEGIN "
-                        + SqlUpdateWithoutKey + @" WHERE " + columnName + @"=@key
-                     END
-                 ELSE
-                     BEGIN "
-                       + SqlInsert +
-                     "END";
-        }
+//        public virtual string GetUpsertSqlWithCustomKey(string columnName)
+//        {
+//            return @"IF (SELECT COUNT(0) FROM " + TableName + @" WHERE " + columnName + @"=@key) > 0
+//                     BEGIN "
+//                        + SqlUpdateWithoutKey + @" WHERE " + columnName + @"=@key
+//                     END
+//                 ELSE
+//                     BEGIN "
+//                       + SqlInsert +
+//                     "END";
+//        }
         #endregion
     }
 }

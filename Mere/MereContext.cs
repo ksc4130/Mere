@@ -91,7 +91,7 @@ namespace Mere
         public string UserId { get; set; }
         public string Password { get; set; }
 
-        public MereTableMin<T> CurMereTableMin { get; set; }
+        public MereTable<T> CurMereTableMin { get; set; }
 
         public bool BuildingFilterGroup { get; set; }
         public bool CloseFilterGroup { get; set; }
