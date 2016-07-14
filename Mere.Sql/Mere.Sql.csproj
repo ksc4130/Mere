@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MereSqlContextRunQueryExt.cs" />
     <Compile Include="MereTableExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MereSqlContext.cs" />
+    <Compile Include="MereSqlDataReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mere.Core\Mere.Core.csproj">

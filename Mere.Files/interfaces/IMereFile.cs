@@ -9,7 +9,7 @@ namespace Mere.Files.interfaces
 {
      public interface IMereFile
     {
-        MereTable MereTableMin { get; set; }
+        MereTableMin MereTableMin { get; set; }
         MereFileField MereFileFieldForSubRecord { get; set; }
 
         bool DelimitedHasHeader { get; set; }

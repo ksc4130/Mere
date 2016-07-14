@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Mere
 {
-    public class MereTable<T> : MereTable where T : new()
+    public class MereTableMin<T> : MereTableMin where T : new()
     {
         public virtual MereColumn GetMereColumn<TField>(Expression<Func<T, TField>> field)
         {
@@ -19,9 +19,9 @@ namespace Mere
         }
     }
 
-    public class MereTable
+    public class MereTableMin
     {
-        public MereTable()
+        public MereTableMin()
         {
             ConnectionStringBase = "Server={0};Database={1};User Id={2};Password={3};";
         }

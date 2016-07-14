@@ -1065,7 +1065,7 @@ namespace Mere.Core
         {
             string toReturn;
 
-            var mereColumn = mereContext.CurMereTableMin.GetMereColumn(propOrColName);
+            var mereColumn = mereContext.CurMereTable.GetMereColumn(propOrColName);
 
             if (whereSql == null && mereColumn == null)
                 return null;

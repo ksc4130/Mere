@@ -20,6 +20,39 @@ namespace Mere
 {
     public partial class MereUtils
     {
+        public static IEnumerable<T> ExecuteDbCommandQuery<T>(string sql, IDbCommand cmd, int timeout = 60)
+            where T : new()
+        {
+            var mt = CacheCheck<T>();
+            cmd.CommandText = sql;
+            using (cmd)
+            {
+                try
+                {
+                    cmd.CommandText = sql;
+                    cmd.CommandTimeout = timeout;
+
+                    cmd.Connection.Open();
+                    using (var reader = new MereSqlDataReader<T>(cmd.ExecuteReader(), mt.AllMereColumns, true))
+                    {
+
+                        while (reader.Read())
+                        {
+                            yield return reader;
+                        }
+
+                    }
+                }
+                finally
+                {
+                    cmd.Connection.Close();
+                    cmd.Connection.Dispose();
+                    cmd.Parameters.Clear();
+                }
+
+            }
+        }
+
         #region sql
 
         #region async
@@ -440,8 +473,8 @@ namespace Mere
         /// <summary>
         /// MereTable object cache
         /// </summary>
-        public static ConcurrentDictionary<RuntimeTypeHandle, MereTable> Cache =
-            new ConcurrentDictionary<RuntimeTypeHandle, MereTable>();
+        public static ConcurrentDictionary<RuntimeTypeHandle, MereTableMin> Cache =
+            new ConcurrentDictionary<RuntimeTypeHandle, MereTableMin>();
 
         /// <summary>
         /// Flag to try to clean convertions when false just parses and throws any errors that occur
@@ -453,13 +486,13 @@ namespace Mere
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static MereTable<T> CacheCheck<T>()
+        public static MereTableMin<T> CacheCheck<T>()
             where T : new()
         {
             var type = typeof(T);
-            MereTable foundMereTableMin;
+            MereTableMin foundMereTableMin;
             if (Cache.TryGetValue(type.TypeHandle, out foundMereTableMin))
-                return (MereTable<T>)foundMereTableMin;
+                return (MereTableMin<T>)foundMereTableMin;
             var properties = TypeDescriptor.GetProperties(type).PropertyDescriptorCollectionToList();
 
             //for columns 
@@ -584,7 +617,7 @@ namespace Mere
 
             //fill MereTableMin
             var mereTable =
-                new MereTable<T>()
+                new MereTableMin<T>()
                 {
                     AllMereColumns = allMereColumns,
                     IsView = viewAttribute != null,
@@ -618,10 +651,10 @@ namespace Mere
             return mereTable;
         }
 
-        public static MereTable CacheCheck(Type type)
+        public static MereTableMin CacheCheck(Type type)
         {
 
-            MereTable foundMereTableMin;
+            MereTableMin foundMereTableMin;
             if (Cache.TryGetValue(type.TypeHandle, out foundMereTableMin))
                 return foundMereTableMin;
 
@@ -753,7 +786,7 @@ namespace Mere
 
             //fill MereTableMin
             var mereTable =
-                new MereTable()
+                new MereTableMin()
                 {
                     AllMereColumns = allMereColumns,
                     IsView = viewAttribute != null,

@@ -40,10 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\MereColumnAttribute.cs" />
+    <Compile Include="Attributes\MereDisplayNameAttribute.cs" />
+    <Compile Include="Attributes\MereIdentityAttribute.cs" />
+    <Compile Include="Attributes\MereIgnoreAttribute.cs" />
+    <Compile Include="Attributes\MereKeyAttribute.cs" />
+    <Compile Include="Attributes\MereMaxLengthAttribute.cs" />
+    <Compile Include="Attributes\MereNullableAttribute.cs" />
+    <Compile Include="Attributes\MereTableAttribute.cs" />
+    <Compile Include="Attributes\MereViewAttribute.cs" />
     <Compile Include="ExpressionExt.cs" />
     <Compile Include="MereColumn.cs" />
     <Compile Include="MereColumnList.cs" />
     <Compile Include="MereContext.cs" />
+    <Compile Include="MereContextType.cs" />
+    <Compile Include="MereDataReader.cs" />
+    <Compile Include="MereDataSource.cs" />
+    <Compile Include="MereFilterGroup.cs" />
     <Compile Include="MereTable.cs" />
     <Compile Include="MereUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
