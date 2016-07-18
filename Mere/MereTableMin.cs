@@ -39,6 +39,11 @@ namespace Mere
         {
             return new SqlConnection(ConnectionString);
         }
+        public virtual SqlConnection GetConnection(MereDataSource mereDataSource)
+        {
+            return new SqlConnection(string.Format(ConnectionStringBase, mereDataSource.ServerName, mereDataSource.DatabaseName,
+                                     mereDataSource.UserId, mereDataSource.Password, Timeout));
+        }
 
         public string ConnectionStringBase { get; set; }
         public string ConnectionString

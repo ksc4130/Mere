@@ -75,6 +75,24 @@ namespace Mere
             return result;
         }
 
+        public static async Task<int> ExecuteNonQueryAsync<T>(string sql, MereDataSource mereDataSource)
+            where T : new()
+        {
+            var mereTable = CacheCheck<T>();
+            int result;
+            using (var myCn = mereTable.GetConnection(mereDataSource))
+            {
+                var cmd = myCn.CreateCommand();
+
+                cmd.CommandText = sql;
+                await myCn.OpenAsync();
+                result = await cmd.ExecuteNonQueryAsync();
+                myCn.Close();
+            }
+
+            return result;
+        }
+
         public static Task<List<dynamic>> ExecuteQueryAsync<T>(string sql)
              where T : new()
         {
