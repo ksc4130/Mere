@@ -990,6 +990,41 @@ namespace Mere
                     // ReSharper restore AssignNullToNotNullAttribute
                 };
             }
+            else if (mereColumn.PropertyDescriptor.PropertyType == typeof(bool))
+            {
+                setAct = (parent, val) =>
+                {
+                    bool d;
+                    if (!CleanupConversion)
+                        d = bool.Parse(val.ToString());
+                    else
+                        bool.TryParse(val == null ? "false" : val.ToString(), out d);
+
+
+                    mereColumn.PropertyDescriptor.SetValue(parent, d);
+                };
+            }
+            else if (mereColumn.PropertyDescriptor.PropertyType == typeof(bool?))
+            {
+                setAct = (parent, val) =>
+                {
+                    bool? d = null;
+                    if (!CleanupConversion)
+                        d = (bool?)val;
+                    else
+                    {
+                        bool test;
+                        if (val != null && bool.TryParse(val.ToString(), out test))
+                        {
+                            d = test;
+                        }
+                    }
+
+                    // ReSharper disable AssignNullToNotNullAttribute
+                    mereColumn.PropertyDescriptor.SetValue(parent, d);
+                    // ReSharper restore AssignNullToNotNullAttribute
+                };
+            }
             else
             {
                 setAct = mereColumn.PropertyDescriptor.SetValue;
