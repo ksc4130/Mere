@@ -12,3 +12,8 @@ Y:\src\mere\Mere\bin\Release\Mere.pdb
 Y:\src\mere\Mere\obj\Release\Mere.csprojResolveAssemblyReference.cache
 Y:\src\mere\Mere\obj\Release\Mere.dll
 Y:\src\mere\Mere\obj\Release\Mere.pdb
+C:\Projects\Mere\Mere\bin\Release\Mere.dll
+C:\Projects\Mere\Mere\bin\Release\Mere.pdb
+C:\Projects\Mere\Mere\obj\Release\Mere.csprojResolveAssemblyReference.cache
+C:\Projects\Mere\Mere\obj\Release\Mere.dll
+C:\Projects\Mere\Mere\obj\Release\Mere.pdb
