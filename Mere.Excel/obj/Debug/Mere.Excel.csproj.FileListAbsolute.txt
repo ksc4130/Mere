@@ -6,3 +6,11 @@ C:\_HhProjects\Mere\Mere.Excel\bin\Debug\Mere.pdb
 C:\_HhProjects\Mere\Mere.Excel\obj\Debug\Mere.Excel.csprojResolveAssemblyReference.cache
 C:\_HhProjects\Mere\Mere.Excel\obj\Debug\Mere.Excel.dll
 C:\_HhProjects\Mere\Mere.Excel\obj\Debug\Mere.Excel.pdb
+C:\Projects\Mere\Mere.Excel\bin\Debug\Mere.Excel.dll
+C:\Projects\Mere\Mere.Excel\bin\Debug\Mere.Excel.pdb
+C:\Projects\Mere\Mere.Excel\bin\Debug\CarlosAg.ExcelXmlWriter.dll
+C:\Projects\Mere\Mere.Excel\bin\Debug\Mere.dll
+C:\Projects\Mere\Mere.Excel\bin\Debug\Mere.pdb
+C:\Projects\Mere\Mere.Excel\obj\Debug\Mere.Excel.csprojResolveAssemblyReference.cache
+C:\Projects\Mere\Mere.Excel\obj\Debug\Mere.Excel.dll
+C:\Projects\Mere\Mere.Excel\obj\Debug\Mere.Excel.pdb
