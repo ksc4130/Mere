@@ -12,3 +12,10 @@ Y:\src\mere\Mere.Files\bin\Debug\Mere.pdb
 Y:\src\mere\Mere.Files\obj\Debug\Mere.Files.csprojResolveAssemblyReference.cache
 Y:\src\mere\Mere.Files\obj\Debug\Mere.Files.dll
 Y:\src\mere\Mere.Files\obj\Debug\Mere.Files.pdb
+C:\Projects\Mere\Mere.Files\bin\Debug\Mere.Files.dll
+C:\Projects\Mere\Mere.Files\bin\Debug\Mere.Files.pdb
+C:\Projects\Mere\Mere.Files\bin\Debug\Mere.dll
+C:\Projects\Mere\Mere.Files\bin\Debug\Mere.pdb
+C:\Projects\Mere\Mere.Files\obj\Debug\Mere.Files.csprojResolveAssemblyReference.cache
+C:\Projects\Mere\Mere.Files\obj\Debug\Mere.Files.dll
+C:\Projects\Mere\Mere.Files\obj\Debug\Mere.Files.pdb

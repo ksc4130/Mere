@@ -35,7 +35,7 @@ namespace Mere
                             if (v is DateTime && DateTime.Parse(v.ToString()).Year < 1753)
                                 v = new DateTime(1753, 1, 1);
 
-                            cmd.Parameters.AddWithValue("@" + sel.prop.PropertyName, v ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@" + sel.prop.ColumnName, v ?? DBNull.Value);
                         }
 
                         var key = mereTable.SelectMereColumns.FirstOrDefault(w => w.IsKey);
@@ -105,7 +105,7 @@ namespace Mere
                             if (v is DateTime && DateTime.Parse(v.ToString()).Year < 1753)
                                 v = new DateTime(1753, 1, 1);
 
-                            cmd.Parameters.AddWithValue("@" + sel.prop.PropertyName, v ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@" + sel.prop.ColumnName, v ?? DBNull.Value); // Changed .PropertyName to .ColumnName
                         }
 
                         var key = mereTable.SelectMereColumns.FirstOrDefault(w => w.IsKey);

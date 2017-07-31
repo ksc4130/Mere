@@ -7,3 +7,7 @@ Y:\src\mere\Mere\bin\Debug\Mere.dll
 Y:\src\mere\Mere\bin\Debug\Mere.pdb
 Y:\src\mere\Mere\obj\Debug\Mere.dll
 Y:\src\mere\Mere\obj\Debug\Mere.pdb
+C:\Projects\Mere\Mere\bin\Debug\Mere.dll
+C:\Projects\Mere\Mere\bin\Debug\Mere.pdb
+C:\Projects\Mere\Mere\obj\Debug\Mere.dll
+C:\Projects\Mere\Mere\obj\Debug\Mere.pdb

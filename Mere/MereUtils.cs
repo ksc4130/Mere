@@ -42,6 +42,25 @@ namespace Mere
             return result;
         }
 
+        public static async Task<int> ExecuteNonQueryAsync<T>(string sql, MereDataSource mereDataSource)
+            where T : new()
+        {
+            int result;
+            SqlConnection sqlConnection = MereUtils.CacheCheck<T>().GetConnection(mereDataSource);
+            
+            using (sqlConnection)
+            {
+                var cmd = sqlConnection.CreateCommand();
+
+                cmd.CommandText = sql;
+                await sqlConnection.OpenAsync();
+                result = await cmd.ExecuteNonQueryAsync();
+                sqlConnection.Close();
+            }
+
+            return result;
+        }
+
         public static Task<List<dynamic>> ExecuteQueryAsync<T>(string sql)
              where T : new()
         {
@@ -300,7 +319,7 @@ namespace Mere
                 d.ServerName, d.DatabaseName, d.UserId, d.Password, 0));
         }
 
-        public static SqlConnection GetConnection<T>(MereDataSource mereDataSource) 
+        public static SqlConnection GetConnection<T>(MereDataSource mereDataSource)
             where T : new()
         {
             mereDataSource = mereDataSource ?? MereDataSource.Create<T>();
@@ -860,7 +879,7 @@ namespace Mere
                     else
                     {
                         int test;
-                        if (val  != null && int.TryParse(val.ToString(), out test))
+                        if (val != null && int.TryParse(val.ToString(), out test))
                         {
                             d = test;
                         }
