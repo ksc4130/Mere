@@ -73,6 +73,11 @@ namespace Mere
             return MereBulkInsertAsync(toInsertEn, 1000, false);
         }
 
+        public static Task<bool> MereBulkInsertAsync<T>(this IList<T> toInsertEn, int batchSize, MereDataSource mereDataSource) where T : new()
+        {
+            return toInsertEn.MereBulkInsertAsync<T>(batchSize, false, mereDataSource);
+        }
+
         public async static Task<bool> MereBulkInsertAsync<T>(this IEnumerable<T> toInsertEn, int batchSize, bool truncateLength) where T : new()
         {
             var toInsertList = toInsertEn.ToList();
@@ -98,6 +103,37 @@ namespace Mere
                     cpy.DestinationTableName = mereTableMin.TableName;
                     //cpy.NotifyAfter = 1;
                     //cpy.SqlRowsCopied += (o, e) => Console.WriteLine(e.RowsCopied);
+
+                    await cpy.WriteToServerAsync(mereDataReader);
+                }
+            }
+
+            return true;
+        }
+
+        public async static Task<bool> MereBulkInsertAsync<T>(this IEnumerable<T> toInsertEn, int batchSize, bool truncateLength, MereDataSource mereDataSource) where T : new()
+        {
+            var toInsertList = toInsertEn.ToList();
+            if (toInsertList.Count <= 0)
+                return true;
+
+            var mereTableMin = MereUtils.CacheCheck<T>();
+            var mereDataReader = new MereDataReader<T>(toInsertList, truncateLength);
+            SqlConnection conn = mereDataSource == null ? MereUtils.GetConnection<T>() : MereUtils.GetConnection(mereDataSource);
+
+            using (conn)
+            {
+                await conn.OpenAsync();
+                using (var cpy = new SqlBulkCopy(conn))
+                {
+                    cpy.EnableStreaming = true;
+                    cpy.BulkCopyTimeout = 0;
+                    cpy.BatchSize = batchSize;
+
+                    mereTableMin.SelectMereColumns.ForEach(
+                        x => cpy.ColumnMappings.Add(x.ColumnName, x.ColumnName));
+
+                    cpy.DestinationTableName = mereTableMin.TableName;
 
                     await cpy.WriteToServerAsync(mereDataReader);
                 }

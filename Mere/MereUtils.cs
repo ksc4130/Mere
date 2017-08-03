@@ -919,8 +919,7 @@ namespace Mere
                         }
                     }
 
-                    mereColumn.PropertyDescriptor.SetValue(parent,
-                                                                      d == null ? "" : d.ToString());
+                    mereColumn.PropertyDescriptor.SetValue(parent, d);
                 };
             }
             else if (mereColumn.PropertyDescriptor.PropertyType == typeof(decimal))
